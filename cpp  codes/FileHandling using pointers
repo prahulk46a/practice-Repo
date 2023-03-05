@@ -1,0 +1,286 @@
+RAHUL KAILAS PATIL
+192
+SE ENTC-B
+
+Debug following code in notebook and verify the answer with executed code
+1. #include <stdio.h>
+   int main()
+	{
+	int i = 10;
+	printf("%u",&i);
+	return 0;
+	}
+
+Ans=Output: 2784655684
+
+2. #include <stdio.h>
+	int main(){
+	int i = 10;
+	printf("%d",*(&i));
+	return 0;
+	}
+
+Ans=Output: 10
+
+3. What is a pointer to a pointer?
+Ans:-
+A pointer to a pointer is a form of multiple in direction, or a chain of pointers. Normally, a
+pointer contains the address of a variable. When we define a pointer to a pointer, the first
+pointer contains the address of the second pointer, which points to the location that contains
+the actual value
+
+4. Write a function which returns a pointer.
+Ans:-
+Code :-
+#include <stdio.h>
+int* fun()
+{ 
+ int A = 10;
+ return (&A);
+}
+int main()
+{
+ int* p;
+ p = fun();
+ printf("%p\n", p);
+ printf("%d\n", *p);
+ return 0;
+}
+
+5. What is a pre-processor?
+Ans:-
+In computer science, a pre-processor (or pre-compiler) is a program that processes its input data
+to produce output that is used as input to another program.
+In C programming, The C pre-processor is a macro processor that is used automatically by
+the C compiler to transform your program before actual compilation. It is called a macro
+processor because it allows you to define macros, which are brief abbreviations for longer
+constructs.
+
+6. What is the difference between a macro and a function?
+Ans:-
+The major difference between Macro and Function is Macro does not check any Compile-Time
+Errors and Function checks Compile-Time Errors.
+
+1. Write a program
+a. to print the address of a variable whose value is input from user.
+	#include<stdio.h>
+	int main()
+	{
+	 int a;
+	 int *b;
+	 b=&a;
+	 printf("\nenter number=");
+	 scanf("%d",&a);
+	 printf("%u\n",&*b);
+	 printf("%u",b);
+	 return 0;
+	}
+	Ans=
+	enter number=10
+	6422216
+	6422216
+	
+b.Print the address of the pointer to a variable whose value is input from user.
+	#include <stdio.h>
+	int main( )
+	{
+	int a ;
+	int *p ;
+	printf(" Enter any integer: ") ;
+	scanf("%d ",&a) ;
+	p = &a ;
+	printf("\n Value of Integer : %d ",a) ;
+	printf("\n Value of Integer : %d ",*p) ;
+	printf("\n Value of Integer : %d ",*(&a)) ;
+	printf("\n Address of Integer : %u ",p) ;
+	printf("\n Address of Integer : %u ",&a) ;
+	return 0;
+	}
+
+2. Write a program to find out the greatest and the smallest among three numbers
+using pointers.
+	#include <stdio.h>
+	int main()
+	{
+	 int num1, num2, num3;
+	 int *p1, *p2, *p3;
+	 //taking input from user
+	 printf("Enter First Number: ");
+	 scanf("%d",&num1);
+	 printf("Enter Second Number: ");
+	 scanf("%d",&num2);
+	 printf("Enter Third Number: ");
+	 scanf("%d",&num3);
+	 //assigning the address of input numbers to pointers
+	 p1 = &num1;
+	 p2 = &num2;
+	 p3 = &num3;
+	 if(*p1 > *p2)
+	 {
+	if(*p1 > *p3)
+	{
+	printf("%d is the largest number", *p1);
+	}
+	else
+	{
+	printf("%d is the largest number", *p3);
+	}
+	 }
+	 else
+	 {
+	if(*p2 > *p3)
+	{
+	printf("%d is the largest number", *p2);
+	}
+	else
+	{
+	printf("%d is the largest number", *p3);
+	}
+	 }
+	 return 0;
+
+	}
+
+Output:
+Enter First Number: 72
+Enter Second Number: 23
+Enter Third Number: 51
+72 is the largest number
+
+3. Write a program to reverse the digits a number using pointers.
+	#include<stdio.h>
+	int main( )
+	{
+	 int num, rem, rev=0 ;
+	 int *pn, *pr ;
+	 printf(" Enter the number : ") ;
+	 scanf("%d ",& num) ;
+	 pn = & num ;
+	 pr = & rev ;
+	 do
+	 {
+	 rem = ( *pn ) % 10 ;
+	 *pr = ( *pr * 10 ) + rem ;
+	 *pn = ( *pn ) / 10 ;
+	 }
+	 while(*pn > 0);
+	 printf("\n Reverse of Number is : %d ",*pr) ;
+	 return 0 ;
+	}
+
+Output:
+Enter the number : 25
+Reverse of Number is : 52 
+
+4. Write a program to add two distances in inch-feet using structure. The values of
+the distances is to be taken from the user.
+	#include <stdio.h>
+	struct Distance
+	{
+	 int feet;
+	 float inch;
+	} firstDistance, secondDistance, sum;
+	int main()
+	{
+	 printf("Enter feet and inch for the first distance with a space : \n");
+	 scanf("%d %f", &firstDistance.feet, &firstDistance.inch);
+	 printf("Enter feet and inch for the second distance with a space : \n");
+	 scanf("%d %f", &secondDistance.feet, &secondDistance.inch);
+	 sum.feet = firstDistance.feet + secondDistance.feet;
+	 sum.inch = firstDistance.inch + secondDistance.inch;
+	 while (sum.inch >= 12)
+	 {
+	 sum.inch = sum.inch - 12;
+	 sum.feet++;
+	 }
+	 printf("Sum is %d feet, %.1f inches\n", sum.feet, sum.inch);
+	 return 0;
+	}
+
+Output:
+Enter feet and inch for the first distance with a space :
+12
+23
+Enter feet and inch for the second distance with a space :
+23
+12
+Sum is 37 feet, 11.0 inches
+
+
+
+5. Write a program to add, subtract and multiply two complex numbers using
+structures to function.
+	#include <stdio.h>
+	typedef struct complex 
+	{
+	 float real;
+	 float imag;
+	} complex;
+	complex add(complex n1, complex n2);
+	int main() 
+	{
+	 complex n1, n2, result;
+	 printf("For 1st complex number \n");
+	 printf("Enter the real and imaginary parts: ");
+	 scanf("%f %f", &n1.real, &n1.imag);
+	 printf("\nFor 2nd complex number \n");
+	 printf("Enter the real and imaginary parts: ");
+	 scanf("%f %f", &n2.real, &n2.imag);
+	 result = add(n1, n2);
+	 printf("Sum = %.1f + %.1fi", result.real, result.imag);
+	 return 0;
+	}
+	complex add(complex n1, complex n2) {
+	 complex temp;
+	 temp.real = n1.real + n2.real;
+	 temp.imag = n1.imag + n2.imag;
+	 return (temp);
+	}
+
+Output:
+For 1st complex number
+Enter the real and imaginary parts: 4 -3
+For 2nd complex number
+Enter the real and imaginary parts: 3 -2
+Sum = 7.0 + -5.0i
+
+
+7. Write a macro to calculate area and perimeter of a rectangle.
+	#include<stdio.h>
+	#include<conio.h>
+	#define AREA l*b
+	#define PERIMETER 2*(l+b)
+	int main()
+	{
+	 int l,b;
+	 printf("Enter length and breadth of rectangle: ");
+	 scanf("%d %d",&l,&b);
+	 printf("Area of rectangle is = %d",AREA);
+	 printf("\nPerimeter of rectangle is = %d",PERIMETER);
+	 return 0;
+	}
+
+Output:
+Enter length and breadth of rectangle: 25 15
+Area of rectangle is = 375
+Perimeter of rectangle is = 80
+
+
+9. Write a macro to find average of two numbers.
+Code:
+	#include <stdio.h>
+	#define AVG(x, y) (x + y)/2
+	int main()
+	{
+	 int num1, num2;
+
+	 printf("Enter any two numbers: ");
+	 scanf("%d%d", &num1, &num2);
+
+	 printf("AVG(%d, %d) = %d\n", num1, num2, AVG(num1, num2));
+	 return 0;
+	}
+
+Output:
+Enter any two numbers: 14 16
+AVG(14, 16) = 15
